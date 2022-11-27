@@ -10,21 +10,22 @@
 <body>
 <div id="infos"></div>
     <script>
-        for (let i = 2; i < 10; i++) {
+        for (let i = 2; i < 1000; i++) {
             fetch('https://api.themoviedb.org/3/movie/' +i+ '?api_key=16eb18763928632ac96b6291fa839732&language=en-US')
                     .then((response) => response.json())
                     .then((data) => {
                         let infos = data
-                        if(`$infos.success` != false){
+                        console.log(`$infos.success`)
+                        if(infos.success != false){
                             let h1 = document.createElement('h1')
                             h1.innerHTML = `${infos.title}`
+                            h1.id = i
                             document.getElementById('infos').appendChild(h1)
                         }else{
                             console.log('caca')
                         }
             })
         }
-
 
     </script>
 </body>

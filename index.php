@@ -38,6 +38,7 @@
     let i = document.querySelector('#btn')
     let genre = document.querySelector('#genre')
     i.onclick = (e)=> {
+        document.getElementById('infos').innerHTML='';
         e.preventDefault()
         let selectedGenre = genre.value
         console.log(selectedGenre)

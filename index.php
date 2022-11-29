@@ -35,7 +35,6 @@
 
 <div id="infos"></div>
 <script>
-
     let i = document.querySelector('#btn')
     let genre = document.querySelector('#genre')
     i.onclick = (e)=> {
@@ -55,6 +54,7 @@
                                 let h1 = document.createElement('h1')
                                 h1.innerHTML = `${infos.title}`
                                 h1.id = i
+                                h1.classList.add(selectedGenre)
                                 document.getElementById('infos').appendChild(h1)
                             }
                         }

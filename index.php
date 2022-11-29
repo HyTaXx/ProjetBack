@@ -52,11 +52,17 @@
                         for (let a = 0; a < test; a++) {
                             if (infos.genres[a].name == selectedGenre) {
                                 console.log('caca')
+                                let newdiv = document.createElement('div')
                                 let h1 = document.createElement('h1')
+                                let viewfilm = document.createElement('a')
                                 h1.innerHTML = `${infos.title}`
                                 h1.id = i
                                 h1.classList.add(selectedGenre)
-                                document.getElementById('infos').appendChild(h1)
+                                viewfilm.innerHTML = "Détails"
+                                viewfilm.href = "singlemovie.php?id="+i
+                                newdiv.appendChild(h1)
+                                newdiv.appendChild(viewfilm)
+                                document.getElementById('infos').appendChild(newdiv)
                             }
                         }
 

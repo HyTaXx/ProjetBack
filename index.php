@@ -40,36 +40,38 @@
     i.onclick = (e)=> {
         document.getElementById('infos').innerHTML = '';
         e.preventDefault()
-        let selectedGenre = genre.value
-        console.log(selectedGenre)
         let val = 20
+        let selectedGenre = genre.value
+
         for (let i = 0; i < val; i++) {
             fetch('https://api.themoviedb.org/3/movie/' + i + '?api_key=16eb18763928632ac96b6291fa839732&language=en-US')
             .then((response) => response.json())
             .then((data) => {
                 let infos = data
                 if (infos.success != false) {
-                    let test = infos.genres.length
-                    for (let a = 0; a < test; a++) {
+                    let hasGenre = false;
+                    for (let a = 0; a < infos.genres.length; a++) {
                         if (infos.genres[a].name == selectedGenre) {
-                            let newdiv = document.createElement('div')
-                            let h1 = document.createElement('h1')
-                            let viewfilm = document.createElement('a')
-                            h1.innerHTML = `${infos.title}`
-                            h1.id = i
-                            h1.classList.add(selectedGenre)
-                            viewfilm.innerHTML = "Détails"
-                            viewfilm.href = "singlemovie.php?id=" + i
-                            newdiv.appendChild(h1)
-                            newdiv.appendChild(viewfilm)
-                            document.getElementById('infos').appendChild(newdiv)
+                            hasGenre = true;
                         }
+                    }
+                    if(hasGenre) {
+                        let newdiv = document.createElement('div')
+                        let h1 = document.createElement('h1')
+                        let viewfilm = document.createElement('a')
+                        h1.innerHTML = `${infos.title}`
+                        h1.id = i
+                        h1.classList.add(selectedGenre)
+                        viewfilm.innerHTML = "Détails"
+                        viewfilm.href = "singlemovie.php?id=" + i
+                        newdiv.appendChild(h1)
+                        newdiv.appendChild(viewfilm)
+                        document.getElementById('infos').appendChild(newdiv);
                     }
                 }
             })
         }
     }
-
 </script>
 
 </body>

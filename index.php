@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-<form method="POST">
+<form id="filters" method="POST">
     <select name="genre" id="genre">
 
     </select>

@@ -38,38 +38,38 @@
     let i = document.querySelector('#btn')
     let genre = document.querySelector('#genre')
     i.onclick = (e)=> {
-        document.getElementById('infos').innerHTML='';
+        document.getElementById('infos').innerHTML = '';
         e.preventDefault()
         let selectedGenre = genre.value
         console.log(selectedGenre)
-        for (let i = 2; i < 10; i++) {
+        let val = 20
+        for (let i = 0; i < val; i++) {
             fetch('https://api.themoviedb.org/3/movie/' + i + '?api_key=16eb18763928632ac96b6291fa839732&language=en-US')
-                .then((response) => response.json())
-                .then((data) => {
-                    let infos = data
-                    if (infos.success != false) {
-                        let test = infos.genres.length
-                        for (let a = 0; a < test; a++) {
-                            if (infos.genres[a].name == selectedGenre) {
-                                console.log('caca')
-                                let newdiv = document.createElement('div')
-                                let h1 = document.createElement('h1')
-                                let viewfilm = document.createElement('a')
-                                h1.innerHTML = `${infos.title}`
-                                h1.id = i
-                                h1.classList.add(selectedGenre)
-                                viewfilm.innerHTML = "Détails"
-                                viewfilm.href = "singlemovie.php?id="+i
-                                newdiv.appendChild(h1)
-                                newdiv.appendChild(viewfilm)
-                                document.getElementById('infos').appendChild(newdiv)
-                            }
+            .then((response) => response.json())
+            .then((data) => {
+                let infos = data
+                if (infos.success != false) {
+                    let test = infos.genres.length
+                    for (let a = 0; a < test; a++) {
+                        if (infos.genres[a].name == selectedGenre) {
+                            let newdiv = document.createElement('div')
+                            let h1 = document.createElement('h1')
+                            let viewfilm = document.createElement('a')
+                            h1.innerHTML = `${infos.title}`
+                            h1.id = i
+                            h1.classList.add(selectedGenre)
+                            viewfilm.innerHTML = "Détails"
+                            viewfilm.href = "singlemovie.php?id=" + i
+                            newdiv.appendChild(h1)
+                            newdiv.appendChild(viewfilm)
+                            document.getElementById('infos').appendChild(newdiv)
                         }
-
                     }
-                })
+                }
+            })
         }
     }
+
 </script>
 
 </body>

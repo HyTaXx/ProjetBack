@@ -12,6 +12,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./public/js/script.js" defer></script>
+    <script src="./public/js/search.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 <body>
@@ -22,6 +24,13 @@
     <button type="submit" id="btn">Submit</button>
 </form>
 
+<form action="">
+    <input type="text" id="search-bar">
+</form>
+
+<section id="movieSearched">
+
+</section>
 <section id="list">
 
 </section>
@@ -61,6 +70,5 @@
 
 
 ?>
-
 </body>
 </html>

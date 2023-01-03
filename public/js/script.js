@@ -65,8 +65,20 @@ function showFilm(data) {
     a.innerHTML = 'Voir le film'
     a.href = 'singlemovie.php?id=' + data.id
 
+    let form = document.createElement('form')
+    form.method = 'GET'
+    let addtoalbum = document.createElement('input')
+    addtoalbum.type = 'hidden'
+    addtoalbum.name = 'filmid'
+    addtoalbum.value = data.id
+    let button = document.createElement('button')
+    button.innerHTML = 'Add to album'
+    button.type = 'submit'
+    form.appendChild(addtoalbum)
+    form.appendChild(button)
     // film.appendChild(img)
     film.appendChild(h1)
+    film.appendChild(form)
     // film.appendChild(p)
     film.appendChild(a)
     list.appendChild(film)

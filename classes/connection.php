@@ -23,7 +23,7 @@ class Connection
             'last_name' => $user->lastName,
         ]);
 
-        $this->pdo->execute($statement);
+      //  $this->pdo->execute($statement);
     }
 
 
@@ -35,6 +35,49 @@ class Connection
         return $data;
 
     }
+
+    public function createAlbum(Album $album)
+    {
+        $query = 'INSERT INTO albums (album_name, user_id, isprivate)
+                    VALUES (:album_name, :user_id, :isprivate)';
+        $statement = $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'album_name' => $album->album_name,
+            'user_id' => $_SESSION['id'],
+            'isprivate' => $album->isprivate,
+        ]);
+    }
+
+    public function getAlbums()
+    {
+        $query = 'SELECT * FROM albums WHERE user_id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($_SESSION['id']));
+        return $statement;
+    }
+
+    public function addFilm($film, $album)
+    {
+        $query = 'INSERT INTO movies_albums (movie_id, album_id)
+                  VALUES(:movie_id, :album_id)';
+
+        $statement = $this->pdo->prepare($query);
+        return $statement->execute([
+            'movie_id' => $film,
+            'album_id' => $album,
+        ]);
+    }
+
+    public function getMovies($album){
+        $query = 'SELECT * FROM movies_albums WHERE album_id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($album));
+        return $statement;
+    }
+
+
+
 
 
 

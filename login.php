@@ -87,14 +87,8 @@ if($_POST){
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['password'] = $user['password'];
-            $_SESSION['admin'] = $user['admin'];
             $_SESSION['id'] = $user['id'];
             print_r($user);
-            if($_SESSION['admin'] == 0){
-                    echo 'Vous êtes connectés en utilisateur';
-                }else{
-                    echo 'Vous êtes connectés en admin';
-                }
         }else {
             echo '<h2 style="color: red;" class="center"> Votre e-mail ou mot de passe est erroné ! </h2>';
         }

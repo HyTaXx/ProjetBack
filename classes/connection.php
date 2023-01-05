@@ -93,6 +93,36 @@ class Connection
         return $statement->fetchAll();
     }
 
+    public function getUsers($first_name){
+        $query = 'SELECT * FROM users WHERE first_name = :first_name';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'first_name' => $first_name,
+        ]);
+        return $statement->fetchAll();
+    }
+
+    public function getUserProfile($id){
+        $query = 'SELECT * FROM users WHERE id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetch();
+    }
+
+    public function getPublicAlbums($id){
+        $query = 'SELECT * FROM albums WHERE isprivate = 0 AND user_id = ?';
+        $statement= $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetchAll();
+    }
+
+    public function getLikedAlbums($id){
+        $query = 'SELECT * FROM albums JOIN albums_likes ON album_id = albums.id AND userlike_id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetchAll();
+    }
+
 
 
 

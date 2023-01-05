@@ -29,6 +29,11 @@
     <input type="text" id="search-bar">
 </form>
 
+<form action="" method="POST">
+    <input type="text" name="search-users" id="search-users" placeholder="search users">
+    <button type="submit" name="search-user">Chercher</button>
+</form>
+
 <section id="movieSearched">
 
 </section>
@@ -86,6 +91,15 @@
             echo 'Yo man, ton film est add';
         }
 
+    }
+
+
+    if (isset($_POST['search-users'])) {
+        $username = $_POST['search-users'];
+        $users = $connection->getUsers($username);
+        foreach ($users as $user) {?>
+            <a href="profil.php?id=<?php echo $user['id']?>">Voir le profil</a>
+        <?php }
     }
 
 

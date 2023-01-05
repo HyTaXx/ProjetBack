@@ -1,5 +1,8 @@
 'use strict'
 let list = document.getElementById('list')
+list.classList.add("flex")
+list.classList.add("flex-wrap")
+list.classList.add("justify-center")
 let currentPage = 1
 let genrePage = 1
 let minCount = 0
@@ -54,15 +57,28 @@ async function getFilm(min, max) {
 
 function showFilm(data) {
     let film = document.createElement('div')
+    let stockbtn = document.createElement('div')
+    stockbtn.classList.add("flex")
+    stockbtn.classList.add("flex-row")
+    stockbtn.classList.add("gap-5")
+    stockbtn.classList.add("justify-center")
     film.id = data.id
-    // let img = document.createElement('img')
-    // img.src = 'https://image.tmdb.org/t/p/w500' + data.poster_path
+    let img = document.createElement('img')
+    img.src = 'https://image.tmdb.org/t/p/w500' + data.poster_path
+    img.classList.add("w-[200px]")
+    img.classList.add("h-[300px]")
+    img.classList.add("m-auto")
     let h1 = document.createElement('h1')
     h1.innerHTML = data.title
+    h1.classList.add("m-auto")
+    h1.classList.add("font-bold")
     // let p = document.createElement('p')
     // p.innerHTML = data.overview
     let a = document.createElement('a')
-    a.innerHTML = 'Voir le film'
+    let iWatch = document.createElement('i')
+    iWatch.classList.add("fa-solid")
+    iWatch.classList.add("fa-eye")
+    a.appendChild(iWatch)
     a.href = 'singlemovie.php?id=' + data.id
 
 
@@ -76,7 +92,10 @@ function showFilm(data) {
     visioned.value = film.id
     visioned.type = 'hidden'
     let button2 = document.createElement('button')
-    button2.innerHTML = 'Visionné'
+    let iSeen = document.createElement("i")
+    iSeen.classList.add("fa-solid")
+    iSeen.classList.add("fa-user-check")
+    button2.appendChild(iSeen)
     button2.type = 'submit'
 
     let like = document.createElement('form')
@@ -86,7 +105,11 @@ function showFilm(data) {
     liked.value = film.id
     liked.type = 'hidden'
     let buttonx = document.createElement('button')
-    buttonx.innerHTML = 'Liké'
+    let iLike = document.createElement("i")
+    iLike.classList.add("fa-regular")
+    iLike.classList.add("fa-thumbs-up")
+    buttonx.appendChild(iLike)
+
     buttonx.type = 'submit'
 
 
@@ -94,23 +117,31 @@ function showFilm(data) {
     like.appendChild(buttonx)
     vision.appendChild(visioned)
     vision.appendChild(button2)
+    
 
     let addtoalbum = document.createElement('input')
     addtoalbum.type = 'hidden'
     addtoalbum.name = 'filmid'
     addtoalbum.value = data.id
     let button = document.createElement('button')
-    button.innerHTML = 'Add to album'
+    let iAdd = document.createElement("i")
+    iAdd.classList.add("fa-solid")
+    iAdd.classList.add("fa-circle-plus")
+    button.appendChild(iAdd)
     button.type = 'submit'
     form.appendChild(addtoalbum)
     form.appendChild(button)
-    // film.appendChild(img)
+    film.appendChild(img)
     film.appendChild(h1)
-    film.appendChild(form)
+    stockbtn.appendChild(like)
+    stockbtn.appendChild(form)
     // film.appendChild(p)
-    film.appendChild(a)
-    film.appendChild(vision)
-    film.appendChild(like)
+    stockbtn.appendChild(a)
+    stockbtn.appendChild(vision)
+    film.appendChild(stockbtn)
+    film.classList.add("flex")
+    film.classList.add("flex-col")
+    film.classList.add("w-[200px]")
     list.appendChild(film)
 }
 

@@ -1,10 +1,12 @@
 let searchbar = document.getElementById("search-bar")
 
+
 searchbar.addEventListener("keyup", (event) => {
     result = document.getElementById("search-bar").value
-
     getValue(result)
   });
+
+
 
 function getValue(result){
     // Requêter un utilisateur avec un ID donné.
@@ -17,17 +19,11 @@ function getValue(result){
                 getSection.removeChild(getSection.firstChild);
             }
             // en cas de réussite de la requête
-
-            for (let i = 1; i < 3; i++) {
-                console.log(response)
+            let h2title = document.getElementById("h2Searched")
+            h2title.style.display = "block"
+            for (let i = 0; i < 6; i++) {
                 let a = response.data.results[i]
-                console.log(a);
-                let newdiv = document.createElement("div")
-                let h2 = document.createElement("h2")
-                h2.innerHTML = a.title
-                newdiv.appendChild(h2)
-                getSection.appendChild(newdiv)
-
+                displayMovieSearched(a)
             }
         })
         .catch(function (error) {
@@ -37,4 +33,29 @@ function getValue(result){
         .then(function () {
             // dans tous les cas
         });
+}
+
+function displayMovieSearched(a){
+                let stockbtn = document.createElement('div')
+                stockbtn.classList.add("flex")
+                stockbtn.classList.add("flex-row")
+                stockbtn.classList.add("gap-5")
+                stockbtn.classList.add("justify-center")                
+                console.log(a);
+                let newdiv = document.createElement("div")
+                newdiv.classList.add("flex")
+                newdiv.classList.add("flex-col")
+                newdiv.classList.add("w-[200px]")
+                let h2 = document.createElement("h2")
+                h2.innerHTML = a.title
+                let img = document.createElement('img')
+                img.src = 'https://image.tmdb.org/t/p/w500' + a.poster_path
+                img.classList.add("w-[200px]")
+                img.classList.add("h-[300px]")
+                img.classList.add("m-auto")
+                newdiv.appendChild(img)
+                newdiv.appendChild(h2)
+                newdiv.appendChild(stockbtn)
+
+                getSection.appendChild(newdiv)
 }

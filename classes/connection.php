@@ -76,6 +76,25 @@ class Connection
         return $statement;
     }
 
+    public function getNewUserId($email){
+        $query = 'SELECT * FROM users WHERE email = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($email));
+        return $statement->fetch();
+    }
+
+    public function getAlbum($name){
+        $query = 'SELECT * FROM albums WHERE album_name = :name AND user_id = :id';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'name' => $name,
+            'id' => $_SESSION['id']
+        ]);
+        return $statement->fetchAll();
+    }
+
+
+
 
 
 

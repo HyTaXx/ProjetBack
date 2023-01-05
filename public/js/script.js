@@ -65,8 +65,36 @@ function showFilm(data) {
     a.innerHTML = 'Voir le film'
     a.href = 'singlemovie.php?id=' + data.id
 
+
     let form = document.createElement('form')
     form.method = 'GET'
+
+    let vision = document.createElement('form')
+    vision.method = 'POST'
+    let visioned = document.createElement('input')
+    visioned.name = 'visioned'
+    visioned.value = film.id
+    visioned.type = 'hidden'
+    let button2 = document.createElement('button')
+    button2.innerHTML = 'Visionné'
+    button2.type = 'submit'
+
+    let like = document.createElement('form')
+    like.method = 'POST'
+    let liked = document.createElement('input')
+    liked.name = 'liked'
+    liked.value = film.id
+    liked.type = 'hidden'
+    let buttonx = document.createElement('button')
+    buttonx.innerHTML = 'Liké'
+    buttonx.type = 'submit'
+
+
+    like.appendChild(liked)
+    like.appendChild(buttonx)
+    vision.appendChild(visioned)
+    vision.appendChild(button2)
+
     let addtoalbum = document.createElement('input')
     addtoalbum.type = 'hidden'
     addtoalbum.name = 'filmid'
@@ -81,6 +109,8 @@ function showFilm(data) {
     film.appendChild(form)
     // film.appendChild(p)
     film.appendChild(a)
+    film.appendChild(vision)
+    film.appendChild(like)
     list.appendChild(film)
 }
 

@@ -54,6 +54,7 @@ session_start();
 
 require_once 'classes/user.php';
 require_once 'classes/connection.php';
+require_once 'classes/album.php';
 
 if($_POST){
     if(isset($_POST['register'])) {
@@ -69,6 +70,17 @@ if($_POST){
             $connection = new Connection();
             $result = $connection->insert($user);
             if ($result) {
+                $newUser = $connection->getNewUserId($_POST['email']);
+                var_dump($newUser);
+                $_SESSION['id'] = $newUser['id'];
+                $visionned = new Album('visionnes', 0);
+                $result2 = $connection->createAlbum($visionned);
+                $liked = new Album('likes', 0);
+                $result3 = $connection->createAlbum($liked);
+                $getliked = $connection->getAlbum('likes');
+                $getwatched = $connection->getAlbum('visionnes');
+                $_SESSION['liked'] = $getliked['id'];
+                $_SESSION['visionned'] = $getwatched['id'];
                 echo 'You have been registered';
             } else {
                 echo 'Internal error😔 ';
@@ -88,7 +100,10 @@ if($_POST){
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['password'] = $user['password'];
             $_SESSION['id'] = $user['id'];
-            print_r($user);
+            $getliked = $connection->getAlbum('likes');
+            $getwatched = $connection->getAlbum('visionnes');
+            $_SESSION['liked'] = $getliked[0]['id'];
+            $_SESSION['visionned'] = $getwatched[0]['id'];
         }else {
             echo '<h2 style="color: red;" class="center"> Votre e-mail ou mot de passe est erroné ! </h2>';
         }

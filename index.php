@@ -2,6 +2,7 @@
     session_start();
     require_once 'classes/album.php';
     require_once 'classes/connection.php';
+    $connection = new Connection();
 ?>
 
 <!doctype html>
@@ -56,6 +57,26 @@
         }else{
             echo 'Nope';
         }
+    }
+
+    if(isset($_POST['visioned'])){
+        $film = $_POST['visioned'];
+        $response =  $connection->addFilm($film, $_SESSION['visionned']);
+
+        if($response){
+            echo 'Yo man, ton film est add';
+        }
+
+    }
+
+    if(isset($_POST['liked'])){
+        $film = $_POST['liked'];
+        $response =  $connection->addFilm($film, $_SESSION['liked']);
+
+        if($response){
+            echo 'Yo man, ton film est add';
+        }
+
     }
 
 

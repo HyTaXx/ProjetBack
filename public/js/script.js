@@ -141,14 +141,15 @@ pagePlus.addEventListener('click', () => {
         currentPage += 1
         minCount = (currentPage - 1) * 20
         maxCount = currentPage * 20
+        list.innerHTML = ''
+        getFilm(minCount, maxCount)
     } else {
         genrePage += 1
         minCount = (genrePage - 1) * 20
         maxCount = genrePage * 20
+        list.innerHTML = ''
+        getFilm(0, 20)
     }
-
-    list.innerHTML = ''
-    getFilm(0, 20)
 })
 
 pageMinus.addEventListener('click', () => {
@@ -157,14 +158,15 @@ pageMinus.addEventListener('click', () => {
             currentPage -= 1
             minCount = (currentPage - 1) * 20
             maxCount = currentPage * 20
+            list.innerHTML = ''
+            getFilm(minCount, maxCount)
         } else {
             genrePage -= 1
             minCount = (genrePage - 1) * 20
             maxCount = genrePage * 20
+            list.innerHTML = ''
+            getFilm(0, 20)
         }
-
-        list.innerHTML = ''
-        getFilm(0, 20)
     }
 })
 

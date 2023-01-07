@@ -64,7 +64,12 @@ function showFilm(data) {
     stockbtn.classList.add("justify-center")
     film.id = data.id
     let img = document.createElement('img')
-    img.src = 'https://image.tmdb.org/t/p/w500' + data.poster_path
+    if(data.poster_path!=null){
+        console.log(data.poster_path)
+        img.src = 'https://image.tmdb.org/t/p/w500' + data.poster_path
+    } else {
+        img.src = "img/unknown.jpg"
+    }
     img.classList.add("w-[200px]")
     img.classList.add("h-[300px]")
     img.classList.add("m-auto")

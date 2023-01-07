@@ -91,7 +91,6 @@ function displayMovieSearched(a){
                 stockbtn.classList.add("flex-row")
                 stockbtn.classList.add("gap-5")
                 stockbtn.classList.add("justify-center")                
-                console.log(a);
                 let newdiv = document.createElement("div")
                 newdiv.classList.add("flex")
                 newdiv.classList.add("flex-col")
@@ -100,7 +99,11 @@ function displayMovieSearched(a){
                 h2.classList.add("font-bold")
                 h2.innerHTML = a.title
                 let img = document.createElement('img')
-                img.src = 'https://image.tmdb.org/t/p/w500' + a.poster_path
+                if(a.poster_path!='null'){
+                    img.src = 'https://image.tmdb.org/t/p/w500' + a.poster_path
+                } else {
+                    img.src = "img/unknown.jpg"
+                }
                 img.classList.add("w-[200px]")
                 img.classList.add("h-[300px]")
                 img.classList.add("m-auto")

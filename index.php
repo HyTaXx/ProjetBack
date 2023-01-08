@@ -48,8 +48,21 @@
         <hr class="h-px bg-[#5F5F5F] border-0">
         <div class="flex flex-row justify-center gap-5 p-2">
             <a href="index.php" class="text-white">Accueil</a>
-            <a href="#" class="text-white">Albums</a>
-            <a href="#" class="text-white">Profils</a>
+            <?php if($_SESSION["id"]){
+                $id = $_SESSION["id"];
+                echo "<a href='viewalbum.php?id=$id' class='text-white'>Album</a>";
+                } else {
+                    echo "<a href='login.php' class='text-white'>Profil</a>";
+                    }
+            ?>
+
+            <?php if($_SESSION["id"]){
+                $id = $_SESSION["id"];
+                echo "<a href='profil.php?id=$id' class='text-white'>Profil</a>";
+                } else {
+                    echo "<a href='login.php' class='text-white'>Profil</a>";
+                    }
+            ?>
             <form id="filters" method="POST" class="border-2 border-[#5F5F5F]">
                 <select name="genre" id="genre" class="bg-[#393939] text-white">
             

@@ -71,6 +71,7 @@ if($_POST){
             $getwatched = $connection->getAlbum('visionnes');
             $_SESSION['liked'] = $getliked[0]['id'];
             $_SESSION['visionned'] = $getwatched[0]['id'];
+            header('Location: index.php');
         }else {
             echo '<h2 style="color: red;" class="center"> Votre e-mail ou mot de passe est erroné ! </h2>';
         }

@@ -80,6 +80,7 @@ require_once 'classes/album.php';
                     $getwatched = $connection->getAlbum('visionnes');
 
                     echo 'You have been registered';
+                    header('Location: login.php');
                 } else {
                     echo 'Internal error😔 ';
                 }

@@ -38,6 +38,15 @@
 
     $sharedalbums = $connection->getAcceptedInvitations($_SESSION['id']);
 
+    if($sharedalbums){
+        foreach ($sharedalbums as $sharedalbum){
+            $getalbum = $connection->getSharedAlbum();
+            foreach ($getalbum as $getsinglealbum){
+                echo $getsinglealbum['album_name'];
+            }
+        }
+    }
+
     ?>
 
 

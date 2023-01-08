@@ -5,9 +5,6 @@ require_once 'classes/connection.php';
 require_once 'classes/user.php';
 require_once 'classes/album.php';
 
-if($_SESSION['id'] != null){
-    header('Location: index.php');
-}
 
 ?>
 

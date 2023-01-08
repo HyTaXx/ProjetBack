@@ -26,7 +26,19 @@
         foreach ($req as $album): ?>
         <h2><?php echo $album['album_name']?></h2>
             <a href="viewalbum.php?id=<?php echo $album['id']?>">Voir mon album</a>
+            <form method="POST" action="invite.php">
+                <input type="hidden" name="album_id" value="<?php echo $album['id'] ?> ">
+                <button type="submit">Inviter un ami</button>
+            </form>
     <?php endforeach; } ?>
+
+    <h1>Albums partagés</h1>
+
+    <?php
+
+    $sharedalbums = $connection->getAcceptedInvitations($_SESSION['id']);
+
+    ?>
 
 
 </body>

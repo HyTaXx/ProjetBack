@@ -17,7 +17,7 @@ $likedalbums = $connection->getLikedAlbums($_GET['id']);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FilmHub - Profil</title>
+    <title>Document</title>
 </head>
 <body>
         <h1>Profil de <?php echo $user['first_name'] . ' ' . $user['last_name'] ?> </h1>
@@ -30,6 +30,8 @@ $likedalbums = $connection->getLikedAlbums($_GET['id']);
         <?php foreach ($likedalbums as $likedalbum){ ?>
             <h2> <?php echo $likedalbum['album_name']; ?></h2>
         <?php } ?>
+
+
 
 
 

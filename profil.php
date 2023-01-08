@@ -70,6 +70,23 @@ $likedalbums = $connection->getLikedAlbums($_GET['id']);
             <?php foreach ($likedalbums as $likedalbum){ ?>
                 <h2> <?php echo $likedalbum['album_name']; ?></h2>
             <?php } ?>
+
     </section>
+
+        <?php
+
+        $sharedalbums = $connection->getAcceptedInvitations($_GET['id']);
+        $connection = new Connection();
+
+        if($sharedalbums){
+            foreach ($sharedalbums as $sharedalbum){
+                $getalbum = $connection->getSharedAlbum();
+                foreach ($getalbum as $getsinglealbum){
+                    echo $getsinglealbum['album_name'];
+                }
+            }
+        }
+
+        ?>
 </body>
 </html>

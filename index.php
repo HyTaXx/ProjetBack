@@ -20,7 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/18ebf66202.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-black">
+<body class="bg-black text-white">
     <header class="bg-[#393939]">
         <div class="flex flex-row h-16 p-4">
             <div class="basis-1/4 flex justify-center">
@@ -59,7 +59,7 @@
             <a href="index.php" class="text-white">Accueil</a>
             <?php if(isset($_SESSION["id"])){
                 $id = $_SESSION["id"];
-                echo "<a href='viewalbum.php?id=$id' class='text-white'>Album</a>";
+                echo "<a href='my-albums.php?id=$id' class='text-white'>Album</a>";
                 } else {
                     echo "<a href='login.php' class='text-white'>Album</a>";
                     }

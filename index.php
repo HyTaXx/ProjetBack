@@ -18,6 +18,11 @@
     <title>Document</title>
 </head>
 <body>
+
+<a href="my-invitations.php?id=<?php echo $_SESSION['id'] ?>">Mes invitations</a>
+
+
+
 <form id="filters" method="POST">
     <select name="genre" id="genre">
 

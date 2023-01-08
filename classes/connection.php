@@ -102,6 +102,13 @@ class Connection
         return $statement->fetchAll();
     }
 
+    public function getAllUsers(){
+        $query = 'SELECT * FROM users';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function getUserProfile($id){
         $query = 'SELECT * FROM users WHERE id = ?';
         $statement = $this->pdo->prepare($query);
@@ -118,6 +125,50 @@ class Connection
 
     public function getLikedAlbums($id){
         $query = 'SELECT * FROM albums JOIN albums_likes ON album_id = albums.id AND userlike_id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetchAll();
+    }
+
+    public function sendInvite($sender_id, $recipient_id, $album_id, $status){
+        $query = 'INSERT INTO invitations (sender_id, recipient_id, album_id, status) VALUES (:sender_id, :recipient_id, :album_id, :status)';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'sender_id' => $sender_id,
+            'recipient_id' => $recipient_id,
+            'album_id' => $album_id,
+            'status' => $status,
+        ]);
+    }
+
+    public function getWaitingInvitations($id){
+        $query = "SELECT * FROM invitations WHERE recipient_id = ? AND status = 'envoyee' ";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetchAll();
+    }
+
+    public function getUserName($id){
+        $query = 'SELECT first_name FROM users WHERE id = ?';
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+        return $statement->fetchAll();
+    }
+
+    public function acceptInvite($id){
+        $query = "UPDATE invitations SET status = 'acceptee' WHERE id = ?";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+    }
+
+    public function declineInvite($id){
+        $query = "UPDATE invitations SET status = 'refusee' WHERE id = ?";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(array($id));
+    }
+
+    public function getAcceptedInvitations($id){
+        $query = "SELECT * FROM invitations WHERE recipient_id = ? AND status = 'acceptee'";
         $statement = $this->pdo->prepare($query);
         $statement->execute(array($id));
         return $statement->fetchAll();

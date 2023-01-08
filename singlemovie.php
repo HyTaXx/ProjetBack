@@ -58,6 +58,11 @@
         </section>
     </main>
 
+    <?php
+        if($_GET['id'] == 419430 ){ ?>
+            <a href="" class="text-white">BANDE D'ANNONCE</a>
+        <?php } ?>
+
 
 
     <script>

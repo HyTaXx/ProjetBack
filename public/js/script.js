@@ -122,7 +122,7 @@ function showFilm(data) {
     like.appendChild(buttonx)
     vision.appendChild(visioned)
     vision.appendChild(button2)
-    
+
 
     let addtoalbum = document.createElement('input')
     addtoalbum.type = 'hidden'

@@ -38,17 +38,26 @@
             </form>
             <div class="flex flex-row basis-1/4 gap-5">
                 <div>
+                    <?php if(isset($_SESSION['id'])){ ?>
+                    <a href="profil.php?id=<?php echo $_SESSION['id'] ?>" class="text-white">Mon Profil</a>
+                    <?php }else{ ?>
                     <a href="login.php" class="text-white">Se connecter</a>
+                    <?php } ?>
                 </div>
                 <div>
+                    <?php if(isset($_SESSION['id'])){ ?>
+                    <a href="deco.php?id=<?php echo $_SESSION['id'] ?>" class="text-white">Déconnexion</a>
+                    <?php }else{ ?>
                     <a href="register.php" class="text-white">Inscrivez-vous !</a>
+                    <?php } ?>
+
                 </div>
             </div> 
         </div>
         <hr class="h-px bg-[#5F5F5F] border-0">
         <div class="flex flex-row justify-center gap-5 p-2">
             <a href="index.php" class="text-white">Accueil</a>
-            <?php if($_SESSION["id"]){
+            <?php if(isset($_SESSION["id"])){
                 $id = $_SESSION["id"];
                 echo "<a href='viewalbum.php?id=$id' class='text-white'>Album</a>";
                 } else {
@@ -56,7 +65,7 @@
                     }
             ?>
 
-            <?php if($_SESSION["id"]){
+            <?php if(isset($_SESSION["id"])){
                 $id = $_SESSION["id"];
                 echo "<a href='profil.php?id=$id' class='text-white'>Profil</a>";
                 } else {

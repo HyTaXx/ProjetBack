@@ -61,7 +61,7 @@
                 $id = $_SESSION["id"];
                 echo "<a href='viewalbum.php?id=$id' class='text-white'>Album</a>";
                 } else {
-                    echo "<a href='login.php' class='text-white'>Profil</a>";
+                    echo "<a href='login.php' class='text-white'>Album</a>";
                     }
             ?>
 
@@ -82,20 +82,24 @@
     </header>
     <main class="bg-black w-4/5 m-auto flex flex-col justify-center">
         <hr class="h-px bg-[#5F5F5F] border-0">
-        <form action="" method="POST" class="w-full bg-[#393939] p-4 flex flex-row justify-center gap-4">
-            <input type="text" name="search-users" id="search-users" placeholder="Rechercher des utilisateurs" class="p-1 pl-2 pr-6 bg-[#7C7C7C] text-white placeholder-white">
-            <button type="submit" name="search-user" class="text-white">Chercher</button>
-            <?php
+        <form action="" method="POST" class="w-full bg-[#393939] flex flex-row gap-4">
+            <div class="p-4 flex flex-row gap-5">
+                <input type="text" name="search-users" id="search-users" placeholder="Rechercher des utilisateurs" class="p-1 pl-2 pr-6 bg-[#7C7C7C] text-white placeholder-white">
+                <button type="submit" name="search-user" class="text-white">Chercher</button>
+            </div>
+            <div class="flex flex-row gap-5 h-[64px] p-5 border-l-2 border-[#5F5F5F]">
+                <?php
 
-            if (isset($_POST['search-users'])) {
-                $username = $_POST['search-users'];
-                $users = $connection->getUsers($username);
-                foreach ($users as $user) {?>
-                    <a href="profil.php?id=<?php echo $user['id']?>" class="text-white"><?php echo $user['first_name'] . ' ' . $user['last_name']?></a>
-                <?php }
-            }
+                if (isset($_POST['search-users'])) {
+                    $username = $_POST['search-users'];
+                    $users = $connection->getUsers($username);
+                    foreach ($users as $user) {?>
+                        <a href="profil.php?id=<?php echo $user['id']?>" class="text-white"><?php echo $user['first_name'] . ' ' . $user['last_name']?></a>
+                    <?php }
+                }
 
-            ?>
+                ?>
+            </div>
         </form>
 
         <h2 id="h2Searched" class="font-bold bg-black text-white text-center text-xl pb-8 pt-8" style="display:none">Films par recherche</h2>

@@ -93,9 +93,14 @@
                 if (isset($_POST['search-users'])) {
                     $username = $_POST['search-users'];
                     $users = $connection->getUsers($username);
-                    foreach ($users as $user) {?>
+                    $i = 0;
+                    foreach ($users as $user) {
+                        if($i == 5){
+                            break;
+                        }
+                        ?>
                         <a href="profil.php?id=<?php echo $user['id']?>" class="text-white"><?php echo $user['first_name'] . ' ' . $user['last_name']?></a>
-                    <?php }
+                    <?php $i++; }
                 }
 
                 ?>

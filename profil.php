@@ -65,6 +65,7 @@ if(!isset($_GET['id'])){
     </header>
     <section class="w-[80%] m-auto pt-20">
         <h1 class="text-2xl pb-4">Profil de <strong><?php echo $user['first_name'] . ' ' . $user['last_name'] ?></strong> </h1>
+            <a href="my-invitations.php" class="bg-yellow-700 text-black font-bold p-1">Mes invitations</a>
             <h1>Albums Publics :</h1>
 
             <?php foreach ($albums as $album){?>

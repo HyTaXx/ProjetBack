@@ -8,6 +8,10 @@ $connection = new Connection();
 $user = $connection->getUserProfile($_GET['id']);
 $albums = $connection->getPublicAlbums($_GET['id']);
 $likedalbums = $connection->getLikedAlbums($_GET['id']);
+
+if(!isset($_GET['id'])){
+    header('Location: trapped.php');
+}
 ?>
 
 <!doctype html>

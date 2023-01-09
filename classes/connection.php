@@ -175,9 +175,10 @@ class Connection
     }
 
     public function getSharedAlbum(){
-        $query = "SELECT * FROM albums JOIN invitations ON album_id = albums.id";
+        $query = "SELECT * FROM albums JOIN invitations ON album_id = albums.id WHERE status = 'acceptee'";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
         return $statement->fetchAll();
     }
+
 }

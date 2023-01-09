@@ -35,7 +35,7 @@ session_start();
         <div class="contact-box">
             <div class="left3"></div>
             <div class="right flex flex-col gap-8">
-                <input type="email" name="email" class="field p-1" placeholder="Email">
+                <input type="email" name="email" class="field p-1 text-black" placeholder="Email">
                 <input type="password" name="password1" class="field p-1 text-black" placeholder="Password">
                 <button type="submit" value="login" name="login" class="field w-[50%] m-auto bg-yellow-600 p-3 text-black" >Se Connecter</button>
             </div>

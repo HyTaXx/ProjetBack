@@ -113,15 +113,15 @@
         </section>
         <hr class="h-px bg-[#5F5F5F] border-0">
         <h2 class="font-bold bg-black text-white text-center text-xl pb-8 pt-8">Films par catégorie</h2>
-        <section>
+        <section class="flex flex-row gap-5 text-black font-bold justify-center mb-8">
             <div>
-                <button class="tri" value="original_title.asc">Nom</button>
+                <button class="tri bg-yellow-700 p-1" value="original_title.asc">Nom</button>
             </div>
             <div>
-                <button class="tri" value="popularity.asc">Popularité</button>
+                <button class="tri bg-yellow-700 p-1" value="popularity.asc">Popularité</button>
             </div>
             <div>
-                <button class="tri" value="vote_average.asc">Avis</button>
+                <button class="tri bg-yellow-700 p-1" value="vote_average.asc">Avis</button>
             </div>
         </section>
         <section id="list" class="text-white bg-black gap-5">

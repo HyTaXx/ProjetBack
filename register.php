@@ -39,11 +39,11 @@ require_once 'classes/album.php';
         <div class="contact-box">
             <div class="left"></div>
             <div class="right flex flex-col gap-8">
-                <input type="email" name="email" class="field p-1" placeholder="Email">
+                <input type="email" name="email" class="field p-1 text-black" placeholder="Email">
                 <input type="password" name="password1" class="field p-1 text-black" placeholder="Password">
                 <input type="password" name="password2" class="field p-1 text-black" placeholder="Retype password">
-                <input type="text" name="first_name" class="field p-1" placeholder="Firstname">
-                <input type="text" name="last_name" class="field p-1" placeholder="Lastname">
+                <input type="text" name="first_name" class="field p-1 text-black" placeholder="Firstname">
+                <input type="text" name="last_name" class="field p-1 text-black" placeholder="Lastname">
                 <button type="submit" value="register" class="field field w-[50%] m-auto bg-yellow-600 p-3 text-black mb-8" name="register">Register</button>
             </div>
     </form>
@@ -72,12 +72,12 @@ require_once 'classes/album.php';
                     $newUser = $connection->getNewUserId($_POST['email']);
                     var_dump($newUser);
                     $_SESSION['id'] = $newUser['id'];
-                    $visionned = new Album('visionnes', 0);
+                    $visionned = new Album('Visionnés', 0);
                     $result2 = $connection->createAlbum($visionned);
-                    $liked = new Album('likes', 0);
+                    $liked = new Album('Likés', 0);
                     $result3 = $connection->createAlbum($liked);
-                    $getliked = $connection->getAlbum('likes');
-                    $getwatched = $connection->getAlbum('visionnes');
+                    $getliked = $connection->getAlbum('Likés');
+                    $getwatched = $connection->getAlbum('Visionnés');
 
                     echo 'You have been registered';
                     header('Location: login.php');

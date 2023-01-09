@@ -32,8 +32,5 @@ $likedalbums = $connection->getLikedAlbums($_GET['id']);
         <?php } ?>
 
 
-
-
-
 </body>
 </html>

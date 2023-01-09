@@ -78,13 +78,12 @@
         </div>
     <?php endforeach; } ?>
 
-    <h1>Albums partagés</h1>
-
     <?php
 
     $sharedalbums = $connection->getAcceptedInvitations($_SESSION['id']);
-
-    ?>
+    if($sharedalbums){?>
+        <h1>Albums Partagés</h1>
+    <?php } ?>
 
 
     </section>

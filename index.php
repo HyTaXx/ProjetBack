@@ -135,19 +135,23 @@
                 <button id="page-plus" class="w-[90px] h-[60px] bg-yellow-600"><i class="fa-solid fa-chevron-right"></i></button>
             </span>
         </div>
-
+        <hr class="h-px bg-[#5F5F5F] border-0 mb-8">
+        <h2 class="font-bold m-auto mb-5">Albums</h2>
         <?php
 
             if(isset($_GET['filmid'])){
                 $connection = new Connection();
                 $list = $connection->getAlbums();
-
+                ?>
+                <section class="flex flex-row gap-5 justify-center mb-8" id="albumsT"><?php
                 foreach ($list as $album): ?>
-                    <form method="POST">
+                    <form method="POST" class="bg-yellow-700 text-black p-1 font-bold">
                         <input type="hidden" value="<?php echo $album['id']?>" name="album_id">
                         <button type="submit"><?php echo $album['album_name'] ?></button>
                     </form>
                 <?php endforeach;
+                ?>
+                </section><?php
 
             }
 
@@ -162,7 +166,6 @@
                 if($response){
                     echo 'Film ajouté à lalmbum';
                 }else{
-                    echo 'Nope';
                 }
             }
 
@@ -171,7 +174,7 @@
                 $response =  $connection->addFilm($film, $_SESSION['visionned']);
 
                 if($response){
-                    echo 'Yo man, ton film est add';
+
                 }
 
             }
@@ -181,7 +184,7 @@
                 $response =  $connection->addFilm($film, $_SESSION['liked']);
 
                 if($response){
-                    echo 'Yo man, ton film est add';
+
                 }
 
             }

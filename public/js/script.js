@@ -10,6 +10,7 @@ let maxCount = 20
 let btn = document.getElementById('btn')
 let genre = document.getElementById('genre')
 let selectedGenre = 'null'
+let valeur = "popularity.desc"
 
 
 window.onload = getFilters()
@@ -30,6 +31,7 @@ btn.addEventListener('click', getFilm(minCount, maxCount))
 
 // Show film
 async function getFilm(min, max) {
+    list.innerHTML = ''
     if (selectedGenre === 'null') {
         for (let i = min; i < max; i++) {
             await fetch('https://api.themoviedb.org/3/movie/' + i + '?api_key=051277f4f78b500821fed3e0e4d59bf4&language=en=US')
@@ -45,7 +47,7 @@ async function getFilm(min, max) {
         }
     } else {
         for (let i = min; i < max; i++) {
-            await fetch('https://api.themoviedb.org/3/discover/movie?api_key=051277f4f78b500821fed3e0e4d59bf4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + genrePage + '&with_genres=' + selectedGenre + '&with_watch_monetization_types=flatrate')
+            await fetch('https://api.themoviedb.org/3/discover/movie?api_key=051277f4f78b500821fed3e0e4d59bf4&language=en-US&sort_by=' + valeur + '&include_adult=false&include_video=false&page=' + genrePage + '&with_genres=' + selectedGenre + '&with_watch_monetization_types=flatrate')
                 .then(async result => await result.json())
                 .then(data => {
                     let infos = data.results[i]
@@ -205,4 +207,29 @@ pageMinus.addEventListener('click', () => {
         }
     }
 })
+
+let boutton = document.querySelectorAll('.tri')
+
+boutton.forEach(b=>{
+    b.addEventListener('click', e=>{
+        if(b.value === 'popularity.desc'){
+            b.value = 'popularity.asc'
+        }else if (b.value === 'popularity.asc'){
+            b.value = 'popularity.desc'
+        }else if (b.value === 'original_title.desc'){
+            b.value = 'original_title.asc'
+        }else if (b.value === 'original_title.asc'){
+            b.value = 'original_title.desc'
+        }else if (b.value === 'vote_average.desc'){
+            b.value = 'vote_average.asc'
+        }else if (b.value === 'vote_average.asc'){
+            b.value = 'vote_average.desc'
+        }
+        valeur = b.value
+        console.log(b.value)
+        getFilm(0,20)
+
+    })
+})
+
 

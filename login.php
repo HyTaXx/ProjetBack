@@ -49,7 +49,6 @@ session_start();
 
 
 <?php
-session_start();
 require_once 'classes/user.php';
 require_once 'classes/connection.php';
 require_once 'classes/album.php';

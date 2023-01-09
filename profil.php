@@ -64,6 +64,7 @@ $likedalbums = $connection->getLikedAlbums($_GET['id']);
             <h1>Albums Publics :</h1>
 
             <?php foreach ($albums as $album){?>
+                <img src="img/album.PNG" alt="img album" class="w-[300px] h-[300px]">
                 <h2> <?php echo $album['album_name']; ?> </h2>
             <?php } ?>
 

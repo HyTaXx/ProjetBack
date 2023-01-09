@@ -99,7 +99,7 @@ function displayMovieSearched(a){
                 h2.classList.add("font-bold")
                 h2.innerHTML = a.title
                 let img = document.createElement('img')
-                if(a.poster_path!='null'){
+                if(a.poster_path!=null){
                     img.src = 'https://image.tmdb.org/t/p/w500' + a.poster_path
                 } else {
                     img.src = "img/unknown.jpg"

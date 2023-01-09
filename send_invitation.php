@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -13,3 +14,4 @@ $album_id = $_POST['album_id'];
 $status = "envoyee";
 
 $connection->sendInvite($sender_id, $recipient_id, $album_id, $status);
+header("Location: index.php");

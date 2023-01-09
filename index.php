@@ -87,7 +87,7 @@
                 <input type="text" name="search-users" id="search-users" placeholder="Rechercher des utilisateurs" class="p-1 pl-2 pr-6 bg-[#7C7C7C] text-white placeholder-white">
                 <button type="submit" name="search-user" class="text-white">Chercher</button>
             </div>
-            <div class="flex flex-row gap-5 h-[64px] p-5 border-l-2 border-[#5F5F5F] bg-[#393939]">
+            <div class="flex flex-row gap-5 h-[64px] p-5 md:border-l-2 border-[#5F5F5F] bg-[#393939]">
                 <?php
 
                 if (isset($_POST['search-users'])) {

@@ -70,7 +70,6 @@ require_once 'classes/album.php';
                 $result = $connection->insert($user);
                 if ($result) {
                     $newUser = $connection->getNewUserId($_POST['email']);
-                    var_dump($newUser);
                     $_SESSION['id'] = $newUser['id'];
                     $visionned = new Album('Visionnés', 0);
                     $result2 = $connection->createAlbum($visionned);
@@ -80,7 +79,7 @@ require_once 'classes/album.php';
                     $getwatched = $connection->getAlbum('Visionnés');
 
                     echo 'You have been registered';
-                    header('Location: login.php');
+                    header('Location: index.php');
                 } else {
                     echo 'Internal error😔 ';
                 }

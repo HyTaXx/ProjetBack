@@ -57,6 +57,9 @@
     </header>
     <section class="m-auto flex flex-col w-[80%] pt-20">
     <h1 class="text-2xl font-bold">Mes Albums</h1>
+    <div class="mt-8 mb-8">
+        <a href="create-album.php" class="bg-yellow-700 p-1 text-black font-bold">Créer un album</a>
+    </div>
     <?php
     $connection = new Connection();
     $req = $connection->getAlbums();
@@ -83,9 +86,7 @@
 
     ?>
 
-    <div>
-        <a href="create-album.php">Créer un album</a>
-    </div>
+
     </section>
 </body>
 </html>

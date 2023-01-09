@@ -12,17 +12,58 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Créer un album</h1>
+<header class="bg-[#393939]">
+        <div class="flex flex-row h-16 p-4 place-content-around">
+            <div class="basis-1/4 flex justify-center">
+                <a href="index.php">
+                <img src="img/logo_filmhub.png" alt="logo-filmhub">
+                </a>
+            </div>
+            <div class="flex flex-row basis-1/4 gap-5">
+                <div class="flex">
+                    <?php if(isset($_SESSION['id'])){ ?>
+                    <a href="deco.php?id=<?php echo $_SESSION['id'] ?>" class="text-white m-auto">Déconnexion</a>
+                    <?php }else{ ?>
+                    <a href="register.php" class="text-white">Inscrivez-vous !</a>
+                    <?php } ?>
+
+                </div>
+            </div> 
+        </div>
+        <hr class="h-px bg-[#5F5F5F] border-0">
+        <div class="flex flex-row justify-center gap-5 p-2">
+            <a href="index.php" class="text-white">Accueil</a>
+            <?php if(isset($_SESSION["id"])){
+                $id = $_SESSION["id"];
+                echo "<a href='my-albums.php?id=$id' class='text-white'>Album</a>";
+                } else {
+                    echo "<a href='login.php' class='text-white'>Album</a>";
+                    }
+            ?>
+
+            <?php if(isset($_SESSION["id"])){
+                $id = $_SESSION["id"];
+                echo "<a href='profil.php?id=$id' class='text-white'>Profil</a>";
+                } else {
+                    echo "<a href='login.php' class='text-white'>Profil</a>";
+                    }
+            ?>
+        </div>
+    </header>
+<body class="bg-black text-white">
+    <section class="p-20">
+    <h1 class="mb-8">Créer un album</h1>
     <form method="POST">
-        <input type="text" name="album_name" placeholder="album name">
-        <select name="isprivate">
-            <option value="1">Private</option>
-            <option value="0">Public</option>
+        <input type="text" name="album_name" placeholder="album name" class="text-black placeholder-black p-1">
+        <select name="isprivate" class="text-black p-1">
+            <option value="1" class="text-black">Private</option>
+            <option value="0" class="text-black">Public</option>
         </select>
-        <button type="submit">Créer l'album</button>
+        <button type="submit" class="bg-yellow-700 p-1 text-black"><strong>Créer l'album</strong></button>
     </form>
+    </section>
 </body>
 
     <?php

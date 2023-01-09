@@ -69,7 +69,7 @@ require_once 'classes/album.php';
 
     <?php
         if($_GET['id'] == 419430 ){ ?>
-            <a href="" class="text-white">BANDE D'ANNONCE</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=ikWblkVZsPY&ab_channel=ismaloo12" class="text-white">BANDE D'ANNONCE</a>
         <?php } ?>
 
 

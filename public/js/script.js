@@ -91,6 +91,7 @@ function showFilm(data) {
 
     let form = document.createElement('form')
     form.method = 'GET'
+    form.action ='#albumsT'
 
     let vision = document.createElement('form')
     vision.method = 'POST'

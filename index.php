@@ -82,12 +82,12 @@
     </header>
     <main class="bg-black w-4/5 m-auto flex flex-col justify-center">
         <hr class="h-px bg-[#5F5F5F] border-0">
-        <form action="" method="POST" class="w-full bg-[#393939] flex flex-row gap-4">
+        <form action="" method="POST" class="w-full bg-[#393939] flex md:flex-row gap-4 flex-col">
             <div class="p-4 flex flex-row gap-5">
                 <input type="text" name="search-users" id="search-users" placeholder="Rechercher des utilisateurs" class="p-1 pl-2 pr-6 bg-[#7C7C7C] text-white placeholder-white">
                 <button type="submit" name="search-user" class="text-white">Chercher</button>
             </div>
-            <div class="flex flex-row gap-5 h-[64px] p-5 border-l-2 border-[#5F5F5F]">
+            <div class="flex flex-row gap-5 h-[64px] p-5 border-l-2 border-[#5F5F5F] bg-[#393939]">
                 <?php
 
                 if (isset($_POST['search-users'])) {

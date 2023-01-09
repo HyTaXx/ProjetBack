@@ -57,8 +57,8 @@ require_once 'classes/album.php';
             </form>
         </div>
     </header>
-    <main class="flex flex-row gap-20">
-        <section class="w-full max-w-[450px] flex flex-col justify-center"><div id="affichage" class="flex flex-col justify-center"></div></section>
+    <main class="flex md:flex-row gap-20 flex-col justify-center">
+        <section class="w-full max-w-[450px] flex flex-col justify-center m-auto md:m-0"><div id="affichage" class="flex flex-col justify-center"></div></section>
         <section>
             <div id="affichage2" class="flex flex-col"></div>
             <h2 class="text-white font-bold mt-20">Cast</h2>
